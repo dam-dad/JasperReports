@@ -7,6 +7,7 @@ import java.util.TimerTask;
 
 import dad.informes.agenda.AgendaDataProvider;
 import dad.informes.agenda.Main;
+import javafx.animation.AnimationTimer;
 import javafx.application.Application;
 import javafx.embed.swing.SwingNode;
 import javafx.scene.Scene;
@@ -45,12 +46,19 @@ public class JRViewerApp extends Application {
 		primaryStage.setTitle("JRViewer embebido en JavaFX");
 		primaryStage.setScene(new Scene(root, 640, 480));
 		primaryStage.show();
-
-		new Timer().schedule(new TimerTask() {
-			public void run() {
-				viewer.repaint();
+		
+		// refresca el nodo Swing cada 0.1 segundos
+		AnimationTimer swingRepainter = new AnimationTimer() {
+			private long last = 0;
+			@Override
+			public void handle(long now) {
+				if (now - last > 1E8) {
+					swingNode.getContent().repaint();
+					last = now;
+				}
 			}
-		}, 500L);
+		};
+		swingRepainter.start();
 
 	}
 	

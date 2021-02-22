@@ -4,8 +4,10 @@ public class Producto {
 	private String descripcion;
 	private Integer unidades;
 	private Double precio;
+	private String rutaImagen = "images/logo.jpg";
 
-	public Producto() {}
+	public Producto() {
+	}
 
 	public Producto(String descripcion, Integer unidades, Double precio) {
 		super();
@@ -36,6 +38,14 @@ public class Producto {
 
 	public void setPrecio(Double precio) {
 		this.precio = precio;
+	}
+
+	public String getRutaImagen() {
+		return rutaImagen;
+	}
+
+	public void setRutaImagen(String rutaImagen) {
+		this.rutaImagen = rutaImagen;
 	}
 
 }

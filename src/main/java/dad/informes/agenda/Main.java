@@ -36,24 +36,24 @@ public class Main {
         
 	}
 	
-	public static void generarPdf() throws JRException, IOException {
-
-		// compila el informe
-		JasperReport report = JasperCompileManager.compileReport(Main.class.getResourceAsStream(JRXML_FILE));		
-
-		// mapa de parámetros para el informe
-		Map<String, Object> parameters = new HashMap<String, Object>();
-		parameters.put("anyo", 2014); // no lo uso, pero se lo paso
-		
-		// generamos el informe (combinamos el informe compilado con los datos) 
-        JasperPrint print  = JasperFillManager.fillReport(report, parameters, new JRBeanCollectionDataSource(AgendaDataProvider.getProfesores()));
-        
-        // exporta el informe a un fichero PDF
-        JasperExportManager.exportReportToPdfFile(print, PDF_FILE);
-        
-        // Abre el archivo PDF generado con el programa predeterminado del sistema
-		Desktop.getDesktop().open(new File(PDF_FILE));
-	}
+//	public static void generarPdf() throws JRException, IOException {
+//
+//		// compila el informe
+//		JasperReport report = JasperCompileManager.compileReport(Main.class.getResourceAsStream(JRXML_FILE));		
+//
+//		// mapa de parámetros para el informe
+//		Map<String, Object> parameters = new HashMap<String, Object>();
+//		parameters.put("anyo", 2014); // no lo uso, pero se lo paso
+//		
+//		// generamos el informe (combinamos el informe compilado con los datos) 
+//        JasperPrint print  = JasperFillManager.fillReport(report, parameters, new JRBeanCollectionDataSource(AgendaDataProvider.getProfesores()));
+//        
+//        // exporta el informe a un fichero PDF
+//        JasperExportManager.exportReportToPdfFile(print, PDF_FILE);
+//        
+//        // Abre el archivo PDF generado con el programa predeterminado del sistema
+//		Desktop.getDesktop().open(new File(PDF_FILE));
+//	}
 
 	public static void main(String args[]) throws JRException, IOException {
 		vistaPrevia();
